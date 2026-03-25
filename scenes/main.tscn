@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://c8q5q8l4bgj34"]
+
+[ext_resource type="Texture2D" uid="uid://dlitapkfc4you" path="res://assets/background.png" id="1_85g3d"]
+[ext_resource type="Script" uid="uid://btywksqy3nk10" path="res://scripts/main.gd" id="1_choun"]
+[ext_resource type="Script" uid="uid://j3gq3bskh7dw" path="res://scripts/card_manager.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dtm44g351oy2t" path="res://scenes/card_slot.tscn" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://665oc7c3ko0g" path="res://scripts/player_hand.gd" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://duvl76augke67" path="res://assets/cardback.jpg" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://cximcgytkw2fi" path="res://scripts/deck.gd" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://hm2uqiv5bpob" path="res://scripts/pyramid.gd" id="6_dp3eg"]
+[ext_resource type="Script" uid="uid://dgcm11u3bldcq" path="res://scripts/input_manager.gd" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bba2f5wlp1djn" path="res://assets/exit_button.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://dgfddf02xkhb3" path="res://exit_button.gd" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://b3as1de180cgr" path="res://assets/options_screen.png" id="11_a8y0u"]
+[ext_resource type="Script" uid="uid://d1j0htpq810cp" path="res://scripts/options.gd" id="11_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://clqjuquwmhywn" path="res://assets/landing_screen.png" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://dv7je2uy3ia5w" path="res://assets/SlayThePyramid.png" id="12_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://uhgckpeqmvro" path="res://assets/Fiery infernal glowi.png" id="12_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://byfhtsvowcevy" path="res://assets/start_button.png" id="13_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://7xwb2tp7pq5f" path="res://assets/options_button.png" id="17_muem4"]
+[ext_resource type="Texture2D" uid="uid://bkwlploge63xp" path="res://assets/retire_button.png" id="19_0ld40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(139, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(164, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+size = Vector2(175, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
+size = Vector2(51, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp3eg"]
+size = Vector2(236, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqmmt"]
+size = Vector2(233, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc10j"]
+size = Vector2(44, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jscy8"]
+size = Vector2(47, 41.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ld40"]
+size = Vector2(162, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm3ni"]
+size = Vector2(129.5, 46)
+
+[node name="main" type="Node2D" unique_id=1442405445]
+script = ExtResource("1_choun")
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1365328415]
+process_mode = 3
+process_priority = 1
+script = ExtResource("6_tefeu")
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1363759036]
+script = ExtResource("1_jyhfs")
+
+[node name="CardSlot" parent="." unique_id=772962228 instance=ExtResource("2_tbgi4")]
+visible = false
+z_as_relative = false
+position = Vector2(275, 200)
+
+[node name="CardSlot2" parent="." unique_id=1454792186 instance=ExtResource("2_tbgi4")]
+visible = false
+z_as_relative = false
+position = Vector2(450, 200)
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=135461626]
+script = ExtResource("3_tefeu")
+
+[node name="Pyramid" type="Node2D" parent="." unique_id=1316712247]
+script = ExtResource("6_dp3eg")
+
+[node name="Deck" type="Node2D" parent="." unique_id=1817423326]
+visible = false
+position = Vector2(98, 200)
+script = ExtResource("4_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck" unique_id=1074886164]
+z_index = -2
+position = Vector2(-2, 2)
+texture = ExtResource("4_o6xl0")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=911292006]
+position = Vector2(-7, 4)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=2035726692]
+position = Vector2(6, -2)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="ExitButton" type="Node2D" parent="." unique_id=1235523202]
+visible = false
+position = Vector2(1450, 40)
+script = ExtResource("7_tipki")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExitButton" unique_id=906586644]
+position = Vector2(6, 1)
+texture = ExtResource("7_o6xl0")
+
+[node name="Area2D" type="Area2D" parent="ExitButton" unique_id=1785671784]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitButton/Area2D" unique_id=1905685570]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="StartButton" type="Node2D" parent="." unique_id=1268805948]
+visible = false
+position = Vector2(1450, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="StartButton" unique_id=964151686]
+position = Vector2(1.9075341, 1.5024968)
+scale = Vector2(0.29, 0.265)
+texture = ExtResource("13_jkv2x")
+
+[node name="Area2D" type="Area2D" parent="StartButton" unique_id=1525538501]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton/Area2D" unique_id=1295913545]
+position = Vector2(6.5, 3.5)
+shape = SubResource("RectangleShape2D_jbj1t")
+
+[node name="Options" type="Node2D" parent="." unique_id=1275734538]
+visible = false
+z_index = -4
+script = ExtResource("11_jbj1t")
+
+[node name="OptionBackground" type="Sprite2D" parent="Options" unique_id=2001748718]
+z_index = -2
+position = Vector2(800, 512)
+scale = Vector2(1.045, 1)
+texture = ExtResource("11_a8y0u")
+
+[node name="AceX" type="Sprite2D" parent="Options" unique_id=273814736]
+visible = false
+position = Vector2(482, 344.99997)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("12_jkv2x")
+
+[node name="FaceX" type="Sprite2D" parent="Options" unique_id=1377111865]
+visible = false
+position = Vector2(481.99994, 452)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("12_jkv2x")
+
+[node name="GTX" type="Sprite2D" parent="Options" unique_id=1527263268]
+visible = false
+position = Vector2(480, 552.99994)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("12_jkv2x")
+
+[node name="Ace2D" type="Area2D" parent="Options" unique_id=1276924300]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Options/Ace2D" unique_id=278230456]
+position = Vector2(484, 342)
+shape = SubResource("RectangleShape2D_muem4")
+
+[node name="Ok2D" type="Area2D" parent="Options" unique_id=445839627]
+position = Vector2(623, 673)
+collision_mask = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Options/Ok2D" unique_id=1775879341]
+position = Vector2(-5, 9)
+shape = SubResource("RectangleShape2D_dp3eg")
+
+[node name="Cancel2D" type="Area2D" parent="Options" unique_id=1678121073]
+collision_mask = 130
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Options/Cancel2D" unique_id=295067695]
+position = Vector2(907, 685)
+shape = SubResource("RectangleShape2D_gqmmt")
+
+[node name="Face2D" type="Area2D" parent="Options" unique_id=2038773949]
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Options/Face2D" unique_id=1772199262]
+position = Vector2(481, 450.5)
+shape = SubResource("RectangleShape2D_yc10j")
+
+[node name="GT2D" type="Area2D" parent="Options" unique_id=1504353889]
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Options/GT2D" unique_id=1387646759]
+position = Vector2(478, 551.75)
+shape = SubResource("RectangleShape2D_jscy8")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2014476359]
+z_index = -10
+position = Vector2(-5, -5)
+scale = Vector2(1.045, 1)
+texture = ExtResource("1_85g3d")
+offset = Vector2(770, 512)
+
+[node name="SplashScreen" type="Sprite2D" parent="." unique_id=1887677628]
+z_index = -10
+position = Vector2(1.5258789e-05, -1.0000002)
+scale = Vector2(1.1283919, 1.0195313)
+texture = ExtResource("12_a8y0u")
+offset = Vector2(770, 512)
+
+[node name="LandingPage" type="Sprite2D" parent="." unique_id=927457001]
+visible = false
+z_index = -10
+position = Vector2(-1, 0)
+scale = Vector2(1.045, 1)
+texture = ExtResource("11_trceg")
+offset = Vector2(770, 512)
+
+[node name="OptionsButton" type="Node2D" parent="." unique_id=279576039]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="OptionsButton" unique_id=186700458]
+position = Vector2(1455, 165)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_muem4")
+
+[node name="Area2D" type="Area2D" parent="OptionsButton" unique_id=1816021702]
+collision_layer = 32
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OptionsButton/Area2D" unique_id=483337547]
+position = Vector2(1456, 162.5)
+shape = SubResource("RectangleShape2D_0ld40")
+
+[node name="RetireButton" type="Node2D" parent="." unique_id=1358236011]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="RetireButton" unique_id=1267635387]
+position = Vector2(1452, 42.00001)
+scale = Vector2(0.17, 0.15)
+texture = ExtResource("19_0ld40")
+
+[node name="Area2D" type="Area2D" parent="RetireButton" unique_id=480040429]
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RetireButton/Area2D" unique_id=1245494739]
+position = Vector2(1449.25, 43)
+shape = SubResource("RectangleShape2D_pm3ni")

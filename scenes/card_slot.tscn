@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dtm44g351oy2t"]
+
+[ext_resource type="Script" uid="uid://cny5ugvgsu5y6" path="res://scripts/card_slot.gd" id="1_jmuc5"]
+[ext_resource type="Texture2D" uid="uid://sb4jv2mgjypq" path="res://assets/cardslot.png" id="1_qx3y6"]
+[ext_resource type="Texture2D" uid="uid://c2s837gubaapo" path="res://assets/Fiery red border.png" id="2_cypty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmuc5"]
+size = Vector2(139, 200)
+
+[node name="CardSlot" type="Node2D" unique_id=772962228]
+script = ExtResource("1_jmuc5")
+
+[node name="FireBorder" type="Sprite2D" parent="." unique_id=1026312220]
+visible = false
+z_index = -5
+scale = Vector2(1.05, 0.88)
+texture = ExtResource("2_cypty")
+
+[node name="DashedBorder" type="Sprite2D" parent="." unique_id=2030657282]
+texture = ExtResource("1_qx3y6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=173806760]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=993867999]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jmuc5")

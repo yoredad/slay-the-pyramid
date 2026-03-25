@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://c8q5q8l4bgj34"]
+
+[ext_resource type="Texture2D" uid="uid://dlitapkfc4you" path="res://assets/background.png" id="1_85g3d"]
+[ext_resource type="Script" uid="uid://btywksqy3nk10" path="res://scripts/main.gd" id="1_choun"]
+[ext_resource type="Script" uid="uid://j3gq3bskh7dw" path="res://scripts/card_manager.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dtm44g351oy2t" path="res://scenes/card_slot.tscn" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://665oc7c3ko0g" path="res://scripts/player_hand.gd" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://duvl76augke67" path="res://assets/cardback.jpg" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://cximcgytkw2fi" path="res://scripts/deck.gd" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://dgcm11u3bldcq" path="res://scripts/input_manager.gd" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bba2f5wlp1djn" path="res://assets/exit_button.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://dgfddf02xkhb3" path="res://exit_button.gd" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://clqjuquwmhywn" path="res://assets/landing_screen.png" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://dv7je2uy3ia5w" path="res://assets/SlayThePyramid.png" id="12_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://byfhtsvowcevy" path="res://assets/start_button.png" id="13_jkv2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(139, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(164, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+size = Vector2(175, 31)
+
+[node name="main" type="Node2D" unique_id=1442405445]
+script = ExtResource("1_choun")
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1365328415]
+process_mode = 3
+process_priority = 1
+script = ExtResource("6_tefeu")
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1363759036]
+script = ExtResource("1_jyhfs")
+
+[node name="CardSlot" parent="." unique_id=772962228 instance=ExtResource("2_tbgi4")]
+visible = false
+position = Vector2(95, 432)
+
+[node name="CardSlot2" parent="." unique_id=1454792186 instance=ExtResource("2_tbgi4")]
+visible = false
+position = Vector2(272, 432)
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=135461626]
+script = ExtResource("3_tefeu")
+
+[node name="Deck" type="Node2D" parent="." unique_id=1817423326]
+visible = false
+position = Vector2(98, 658)
+script = ExtResource("4_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck" unique_id=1074886164]
+z_index = -2
+position = Vector2(-2, 2)
+texture = ExtResource("4_o6xl0")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=911292006]
+position = Vector2(-7, 4)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=2035726692]
+position = Vector2(6, -2)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="ExitButton" type="Node2D" parent="." unique_id=1235523202]
+visible = false
+position = Vector2(1450, 40)
+script = ExtResource("7_tipki")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExitButton" unique_id=906586644]
+position = Vector2(6, 1)
+texture = ExtResource("7_o6xl0")
+
+[node name="Area2D" type="Area2D" parent="ExitButton" unique_id=1785671784]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitButton/Area2D" unique_id=1905685570]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="StartButton" type="Node2D" parent="." unique_id=1268805948]
+visible = false
+position = Vector2(1450, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="StartButton" unique_id=964151686]
+position = Vector2(1.9075341, 1.5024968)
+scale = Vector2(0.29, 0.265)
+texture = ExtResource("13_jkv2x")
+
+[node name="Area2D" type="Area2D" parent="StartButton" unique_id=1525538501]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartButton/Area2D" unique_id=1295913545]
+position = Vector2(6.5, 3.5)
+shape = SubResource("RectangleShape2D_jbj1t")
+
+[node name="LandingPage" type="Sprite2D" parent="." unique_id=927457001]
+visible = false
+z_index = -10
+scale = Vector2(1.035, 1)
+texture = ExtResource("11_trceg")
+offset = Vector2(770, 512)
+
+[node name="SplashScreen" type="Sprite2D" parent="." unique_id=1887677628]
+z_index = -10
+scale = Vector2(1.035, 1)
+texture = ExtResource("12_a8y0u")
+offset = Vector2(770, 512)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2014476359]
+visible = false
+z_index = -10
+scale = Vector2(1.035, 1)
+texture = ExtResource("1_85g3d")
+offset = Vector2(770, 512)

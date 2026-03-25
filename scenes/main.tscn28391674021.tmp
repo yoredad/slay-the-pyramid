@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c8q5q8l4bgj34"]
+
+[ext_resource type="Script" uid="uid://j3gq3bskh7dw" path="res://scripts/card_manager.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dtm44g351oy2t" path="res://scenes/card_slot.tscn" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://665oc7c3ko0g" path="res://scripts/player_hand.gd" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://duvl76augke67" path="res://assets/cardback.jpg" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://cximcgytkw2fi" path="res://scripts/deck.gd" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://dgcm11u3bldcq" path="res://scripts/input_manager.gd" id="6_tefeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(139, 196)
+
+[node name="main" type="Node2D" unique_id=1442405445]
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1365328415]
+process_mode = 3
+process_priority = 1
+script = ExtResource("6_tefeu")
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1363759036]
+script = ExtResource("1_jyhfs")
+
+[node name="CardSlot" parent="." unique_id=772962228 instance=ExtResource("2_tbgi4")]
+position = Vector2(95, 432)
+
+[node name="CardSlot2" parent="." unique_id=1454792186 instance=ExtResource("2_tbgi4")]
+position = Vector2(272, 432)
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=135461626]
+script = ExtResource("3_tefeu")
+
+[node name="Deck" type="Node2D" parent="." unique_id=1817423326]
+position = Vector2(98, 658)
+script = ExtResource("4_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck" unique_id=1074886164]
+z_index = -2
+position = Vector2(-2, 2)
+texture = ExtResource("4_o6xl0")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=911292006]
+position = Vector2(-7, 4)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=2035726692]
+position = Vector2(6, -2)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck" unique_id=288546440]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
+text = "0"
