@@ -77,7 +77,7 @@ func checkUncovered():
 					card.faceUp()
 	if !hasCards:
 		print("player wins!")
-		$"..".toggleExit()
+		$"..".gameOver()
 		
 func isUncovered(card):
 	var checkRow = card.row - 2

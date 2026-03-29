@@ -73,21 +73,24 @@ func resetState():
 	slotRef.get_node("FireBorder").visible = false
 	
 func activeCardWins(card):
+	var wins :bool = false
 	if playerHand.size() > 0:
 		var currentCard = playerHand.get(0)
 		if currentCard:	
 			# check option for hard mode
 			if Settings.greaterThan:
 				if currentCard.attack > card.attack:
-					return true
+					wins = true
 				# card is an ace then special rule allows 2 to beat it
 				elif card.attack == 14 and currentCard.attack == 2:
-					return true				
+					wins = true				
 			else:
 				if currentCard.attack >= card.attack:
-					return true
+					wins = true
 				# card is an ace then special rule allows 2 to beat it
 				elif card.attack == 14 and currentCard.attack == 2:
-					return true
-	return false
+					wins = true
+	if wins:
+		$"..".currentStreak += 1
+	return wins
 			

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bwewu8t01fhhs" path="res://scripts/card.gd" id="1_rjlel"]
 [ext_resource type="Texture2D" uid="uid://b1f4oucu1ek7j" path="res://assets/eartha.jpg" id="2_kg30u"]
 [ext_resource type="Texture2D" uid="uid://duvl76augke67" path="res://assets/cardback.jpg" id="2_ktuci"]
+[ext_resource type="FontFile" uid="uid://kc4i7u4jkb5h" path="res://assets/MagicSchoolTwo.ttf" id="3_kg30u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjlel"]
 size = Vector2(138, 194)
@@ -29,6 +30,7 @@ offset_right = 12.0
 offset_bottom = 93.0
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_kg30u")
 text = "A"
 horizontal_alignment = 1
 

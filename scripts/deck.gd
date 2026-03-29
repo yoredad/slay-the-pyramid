@@ -29,9 +29,7 @@ func drawCard():
 	# $RichTextLabel.text = str(cardNo)
 		
 	if playerDeck.size() == 0:
-		$Area2D/CollisionShape2D.disabled = true
-		$Sprite2D.visible = false
-		# $RichTextLabel.visible = false
+		disableTheDeck()
 
 	var newCard = cardScene.instantiate()
 	var cardPath = str("res://assets/" + str(cardDatabase.CARDS[cardDrawn][1]) + ".jpg")
@@ -44,8 +42,14 @@ func drawCard():
 	newCard.position = deckRef.position	# initialize to deck position
 	# newCard.get_node("Health").text = str(cardDatabase.CARDS[cardDrawn][1])
 	cardManRef.add_child(newCard)
+	$"..".cardDrawnFromDeck()
 	return newCard
 
+func disableTheDeck():
+		$Area2D/CollisionShape2D.disabled = true
+		$Sprite2D.visible = false
+		# $RichTextLabel.visible = false
+		
 func drawCardFromDeck():
 	var newCard = drawCard()	
 	newCard.z_index = 52 - cardNo
