@@ -120,8 +120,7 @@ func addCardToAceSlot(card, speed):
 	card.inAceSlot = true
 	card.inPyramid = false
 	aceHand.insert(0, card)
-	aceSlot.get_node("DashedBorder").visible = false
-	aceSlot.get_node("FireBorder").visible = true
+	toggleActiveSlot("AceSlot")
 	animateCardToPosition(card, card.handPosition, DEFAULT_CARD_SPEED)
 
 func removeCardFromAceSlot():
