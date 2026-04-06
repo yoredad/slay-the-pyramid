@@ -72,6 +72,9 @@ func resetState():
 	for card in playerHand: # i is the key
 		card.free() # free the card object
 	playerHand.clear() # remove the cards from the array
+	for card in aceHand:
+		card.free()
+	aceHand.clear()
 	cardSlot.get_node("DashedBorder").visible = true
 	cardSlot.get_node("FireBorder").visible = false
 	if(Settings.aceInTheHole):
