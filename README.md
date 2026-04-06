@@ -46,6 +46,8 @@ Or retire, learn something, and try again.
 
 🚀 Getting Started
 
+play online at https://yoredad.github.io/slay-the-pyramid/
+
 Installation
 
 Clone the repository:
