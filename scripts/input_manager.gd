@@ -4,6 +4,7 @@ signal leftMouseClicked
 signal leftMouseButtonReleased
 
 const COLLISION_MASK_CARD = 1
+const COLLISION_MASK_SLOT = 2
 const COLLISION_MASK_ACE_OPT = 3
 const COLLISION_MASK_DECK = 4
 const COLLISION_MASK_OPT_OK = 65
@@ -50,6 +51,10 @@ func raycastAtCursor():
 			var cardFound = getTopCard(result) # result[0].collider.get_parent()
 			if cardFound:
 				if cardFound.inPlay:
+					if(cardFound.inAceSlot):
+						playerHandRef.toggleActiveSlot("AceSlot")
+					else:
+						playerHandRef.toggleActiveSlot("CardSlot")
 					print("in play " + cardFound.name + " " + str(cardFound.attack))
 				if cardFound.inPyramid:
 					print("in pyramid at " + str(cardFound.row) + " : " + str(cardFound.cell))
@@ -65,6 +70,9 @@ func raycastAtCursor():
 					# if face down, flip face up
 					# if face up evaluate against the active card
 #				cardManagerRef.start_drag(cardFound)
+		elif resultCollisionMask == COLLISION_MASK_SLOT:
+			var top = result[0].collider.get_parent()
+			playerHandRef.toggleActiveSlot(top.name)
 		elif resultCollisionMask == COLLISION_MASK_DECK:
 			# Deck clicked
 			deckRef.drawCardFromDeck()

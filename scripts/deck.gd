@@ -21,7 +21,6 @@ func _ready() -> void:
 	pyramidRef = $"../Pyramid"
 	init()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func drawCard():
 	var cardDrawn = playerDeck[0]
 	playerDeck.erase(cardDrawn)
@@ -30,7 +29,10 @@ func drawCard():
 		
 	if playerDeck.size() == 0:
 		disableTheDeck()
-
+		
+	return getNewCard(cardDrawn)
+	
+func getNewCard(cardDrawn):
 	var newCard = cardScene.instantiate()
 	var cardPath = str("res://assets/" + str(cardDatabase.CARDS[cardDrawn][1]) + ".jpg")
 	newCard.get_node("cardImage").texture = load(cardPath)
@@ -81,7 +83,15 @@ func dealPyramid():
 	pyramidRef.flipFirstCard()
 	 
 func dealAce():
-	for i in range(0, deckRef.size()):
-		pass # var card = z
-	
+	var cardDrawn = null
+	for i in range(0, playerDeck.size()):
+		cardDrawn = playerDeck[i]
+		if(cardDatabase.CARDS[cardDrawn][2] == "A"): # ace
+			playerDeck.erase(cardDrawn)
+			cardNo -= 1
+			break
+	var newCard = getNewCard(cardDrawn)
+	newCard.z_index = 52 - cardNo
+	newCard.get_node("Attack").z_index = 52 - cardNo
+	$"../PlayerHand".addCardToAceSlot(newCard, CARD_DRAW_SPEED)
 	

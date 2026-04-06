@@ -5,7 +5,7 @@ extends Node2D
 @onready var game_screen = $Background
 @onready var deck = $Deck
 @onready var cardSlot = $CardSlot
-@onready var cardSlot2 = $CardSlot2
+@onready var aceSlot = $AceSlot
 @onready var exitButton = $ExitButton
 @onready var startButton = $StartButton
 @onready var optionsButton = $OptionsButton
@@ -63,13 +63,13 @@ func initializeGame():
 	deck.visible = true
 	cardSlot.visible = true
 	cardSlot.cardInSlot = false
-	cardSlot2.visible = false
-	cardSlot2.cardInSlot = false
+	aceSlot.visible = false
+	aceSlot.cardInSlot = false
 	gameState = GAME
 	# if ace in the hole option, find first ace and deal to slot2
 	if Settings.aceInTheHole:
-		cardSlot2.visible = true
-		cardSlot2.cardInSlot = true
+		aceSlot.visible = true
+		aceSlot.cardInSlot = true
 		deck.dealAce()
 	deck.dealPyramid()	
 	
@@ -81,7 +81,7 @@ func returnToLanding():
 	score_board.visible = false;
 	deck.visible = false
 	cardSlot.visible = false
-	cardSlot2.visible = false
+	aceSlot.visible = false
 	options.visible = false
 	resetTheGame()
 	gameState = LANDING		
@@ -144,3 +144,4 @@ func cardDrawnFromDeck():
 	if(currentStreak > longestStreak):
 		longestStreak = currentStreak
 		currentStreak = 0
+		

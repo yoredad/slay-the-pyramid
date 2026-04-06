@@ -70,7 +70,7 @@ visible = false
 z_as_relative = false
 position = Vector2(275, 200)
 
-[node name="CardSlot2" parent="." unique_id=1454792186 instance=ExtResource("2_tbgi4")]
+[node name="AceSlot" parent="." unique_id=1454792186 instance=ExtResource("2_tbgi4")]
 visible = false
 z_as_relative = false
 position = Vector2(450, 200)

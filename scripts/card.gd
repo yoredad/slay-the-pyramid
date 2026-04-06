@@ -10,6 +10,7 @@ var defense
 var cost
 var inPlay
 var inPyramid
+var inAceSlot
 var row
 var cell
 var isFaceUp = false
