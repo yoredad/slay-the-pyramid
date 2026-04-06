@@ -2,36 +2,29 @@ Slay the Pyramid
 A tactical solitaire roguelite where every card is a weapon and every pyramid is a battlefield.
 
 🔥 Overview
-Slay the Pyramid is a fast, strategic twist on classic solitaire. Instead of simply clearing cards, you’re climbing a deadly pyramid of enemies, traps, and treasures—one card at a time. Every move is a choice between survival and aggression, and every run plays out differently.
+Slay the Pyramid is a fast, strategic twist on classic solitaire. Instead of simply clearing cards, you’re climbing a deadly pyramid of enemies one card at a time. Every move is a choice between survival and aggression, and every run plays out differently.
 
-If solitaire and a deck‑building roguelike had a chaotic, card‑slinging baby, this would be it.
 
 🎮 Core Features
 🧱 Pyramid Combat System
 Each pyramid layer is a tactical puzzle.
 
-Cards represent enemies, hazards, buffs, and loot.
+Cards represent enemies.
 
 Clear layers to ascend, upgrade, and survive.
 
 🃏 Solitaire‑Inspired Mechanics
 Familiar card-matching rules with combat consequences.
 
-Chain moves to build combos and unleash powerful attacks.
+Chain moves to maximize your streak and improve your final score.
 
 Manage your draw pile like a resource.
 
 ⚔️ Roguelite Progression
-Permanent unlocks and meta‑progression.
 
 Randomized pyramids ensure no two runs feel the same.
 
 Build unique strategies with each attempt.
-
-💎 Upgrades & Artifacts
-Earn relics that modify rules, enhance abilities, or break them entirely.
-
-Discover synergies that turn a simple hand into a devastating engine.
 
 🚀 Getting Started
 Installation
@@ -39,21 +32,23 @@ Clone the repository:
 
 bash
 git clone https://github.com/yourusername/slay-the-pyramid.git
-Run the game (Godot, Unity, or your engine of choice—just tell me and I’ll tailor this section):
+Run the game using the Godot 4.5 editor
 
 bash
 # Example for Godot
 godot slay_the_pyramid/project.godot
 🧩 How to Play
-Reveal cards from the pyramid.
+Reveal a card from the deck.  It becomes your weapon.
 
-Match or counter cards using your hand.
+Click a reveled enemy from the pyrmaid.
 
-Defeat enemies, avoid traps, and collect upgrades.
+if your active weapon is greater than or equal to the enemy you defeat it.
 
-Climb to the top and slay the final guardian.
+Defeated enemies becomes your new weapon.
 
-Die horribly, learn something, and try again.
+Climb to the top and slay the final enemmy.
+
+Or retire, learn something, and try again.
 
 🗺️ Roadmap
 [ ] More enemy types
