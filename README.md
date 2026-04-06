@@ -52,7 +52,7 @@ Clone the repository:
 
 Bash
 
-git clone https://github.com/yourusername/slay-the-pyramid.git
+git clone https://github.com/yoredad/slay-the-pyramid.git
 
 Run the game using the Godot 4.5 editor:
 
