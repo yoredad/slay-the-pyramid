@@ -25,6 +25,7 @@ var score :int = 0
 var cardsRemaining :int = 52
 var longestStreak :int = 0
 var currentStreak :int = 0
+var streakBonuses :int = 0
 
 const STARTUP = "startup"
 const LANDING = "landing"
@@ -116,9 +117,11 @@ func toggleExit():
 	retireButton.visible = false
 	retireButton.get_node("Area2D/CollisionShape2D").set_deferred("disabled", true)	
 
-func gameOver():
+func gameOver(isWin = false):
 	deck.disableTheDeck()
 	game_over.visible = true;
+	if isWin:
+		$bonus.visible = false
 	# show stats
 	# check the current streak one last time
 	if currentStreak > longestStreak: # could have ended game on longest streak
@@ -137,11 +140,12 @@ func resetStats():
 	cardsRemaining = 52
 	cardsPlayed = 0
 	score = 0
+	streakBonuses = 0
 
 func cardDrawnFromDeck():
 	cardsPlayed += 1
 	cardsRemaining -= 1
 	if(currentStreak > longestStreak):
 		longestStreak = currentStreak
-		currentStreak = 0
+	currentStreak = 0
 		

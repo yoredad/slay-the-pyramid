@@ -14,6 +14,10 @@ var cardSlot
 var aceSlot
 var deckRef
 var activeSlot
+var bonusRef
+var plusoneRef
+var plustwoRef
+var levelUpLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +26,10 @@ func _ready() -> void:
 	aceSlot = $"../AceSlot"
 	deckRef = $"../Deck"
 	cardManRef = $"../CardManager"
+	bonusRef = $"../bonus"
+	plusoneRef = $"../bonus/plusone"
+	plustwoRef = $"../bonus/plustwo"
+	levelUpLabel = $"../LevelUpLabel"
 
 func addCardToHand(card, speed):
 	if card not in playerHand:
@@ -75,6 +83,12 @@ func resetState():
 	for card in aceHand:
 		card.free()
 	aceHand.clear()
+	bonusRef.visible = false
+	plusoneRef.visible = false
+	plustwoRef.visible = false
+	levelUpLabel.visible = false
+	levelUpLabel.modulate = Color(1, 1, 1, 0)
+	$"..".streakBonuses = 0
 	cardSlot.get_node("DashedBorder").visible = true
 	cardSlot.get_node("FireBorder").visible = false
 	if(Settings.aceInTheHole):
@@ -95,19 +109,35 @@ func activeCardWins(card):
 	if currentCard:	
 		# check option for hard mode
 		if Settings.greaterThan:
-			if currentCard.attack > card.attack:
+			if currentCard.attack + $"..".streakBonuses > card.attack:
 				wins = true
 			# card is an ace then special rule allows 2 to beat it
 			elif card.attack == 14 and currentCard.attack == 2:
 				wins = true				
 		else:
-			if currentCard.attack >= card.attack:
+			if currentCard.attack + $"..".streakBonuses >= card.attack:
 				wins = true
 			# card is an ace then special rule allows 2 to beat it
 			elif card.attack == 14 and currentCard.attack == 2:
 				wins = true
 	if wins:
 		$"..".currentStreak += 1
+		if $"..".currentStreak == 10 or $"..".currentStreak == 20:
+			$"..".streakBonuses += 1		
+			# Show Level Up message
+			levelUpLabel.visible = true
+			levelUpLabel.modulate = Color(1, 1, 1, 1)
+			var tween = get_tree().create_tween()
+			tween.tween_interval(2.0)  # Wait 2 seconds
+			tween.tween_property(levelUpLabel, "modulate:a", 0.0, 3.0)  # Fade out over 3 seconds
+			tween.tween_callback(func(): levelUpLabel.visible = false)					
+		if $"..".streakBonuses > 0:
+			bonusRef.visible = true
+			plustwoRef.visible = false
+			plusoneRef.visible = true
+		if $"..".streakBonuses > 1:
+			plusoneRef.visible = false
+			plustwoRef.visible = true
 		if isAceCard:
 			if currentCard:
 				aceHand.erase(currentCard)

@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c23q1os2o7uq5" path="res://assets/game_over.png" id="18_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://bkwlploge63xp" path="res://assets/retire_button.png" id="19_0ld40"]
 [ext_resource type="FontFile" uid="uid://kc4i7u4jkb5h" path="res://assets/MagicSchoolTwo.ttf" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://celyk0776b2n" path="res://scenes/bonus.tscn" id="22_bonus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(139, 196)
@@ -347,3 +348,25 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("21_yc10j")
 theme_override_font_sizes/font_size = 60
 text = "9999"
+
+[node name="bonus" parent="." unique_id=1470367955 instance=ExtResource("22_bonus")]
+position = Vector2(275, 340)
+
+[node name="LevelUpLabel" type="Label" parent="." unique_id=1234567890]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 650.0
+offset_top = -19.0
+offset_right = 950.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("21_yc10j")
+theme_override_font_sizes/font_size = 45
+text = "Level Up!"
+horizontal_alignment = 1

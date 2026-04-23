@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://celyk0776b2n"]
+
+[ext_resource type="Texture2D" uid="uid://cabecgtcrcaey" path="res://assets/plusone.png" id="1_plusone"]
+[ext_resource type="Texture2D" uid="uid://c2gv6fcqeomwi" path="res://assets/plustwo.png" id="2_plustwo"]
+
+[node name="bonus" type="Node2D" unique_id=911197270]
+visible = false
+
+[node name="plusone" type="Sprite2D" parent="." unique_id=123456789]
+visible = false
+scale = Vector2(0.06347656, 0.06347656)
+texture = ExtResource("1_plusone")
+
+[node name="plustwo" type="Sprite2D" parent="." unique_id=987654321]
+visible = false
+scale = Vector2(0.06347656, 0.06347656)
+texture = ExtResource("2_plustwo")
